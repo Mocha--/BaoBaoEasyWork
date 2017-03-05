@@ -1,6 +1,6 @@
 import { observable, } from 'mobx';
 import { observer, inject } from 'mobx-react';
-import _ from 'lodash';
+import { groupBy } from 'lodash';
 import React from 'react';
 import TopHeader from './Widgets/TopHeader/TopHeader.js';
 import TourList from './Widgets/TourList/TourList.js';
@@ -55,7 +55,7 @@ export default class App extends React.Component {
     }
 
     render() {
-        const groupedByArrivedate = _.groupBy(this.tours, 'arriveDate');
+        const groupedByArrivedate = groupBy(this.tours, 'arriveDate');
         return (
             <div className="app-component">
                 <TopHeader onSearchChange={::this.topHeaderSearchChangeHander}
