@@ -1,5 +1,6 @@
 import { observable, } from 'mobx';
 import { observer, inject } from 'mobx-react';
+import _ from 'lodash';
 import React from 'react';
 import TopHeader from './Widgets/TopHeader/TopHeader.js';
 import TourList from './Widgets/TourList/TourList.js';
@@ -29,7 +30,7 @@ export default class App extends React.Component {
                 this.hasFetchedTours = true;
                 this.props.toursStore.append(...tours);
                 this.tours = this.props.toursStore.tours;
-            })
+            });
     }
 
     topHeaderSearchChangeHander(searchText) {
@@ -54,6 +55,7 @@ export default class App extends React.Component {
     }
 
     render() {
+        const groupedByArrivedate = _.groupBy(this.tours, 'arriveDate');
         return (
             <div className="app-component">
                 <TopHeader onSearchChange={::this.topHeaderSearchChangeHander}
@@ -61,9 +63,18 @@ export default class App extends React.Component {
                 </TopHeader>
                 <main>
                     <Spinner shouldShow={!this.hasFetchedTours}></Spinner>
-                    <TourList tours={this.tours}
-                        onTourClick={::this.tourLiClickHander}>
-                    </TourList>
+                    <article className="all-tours">
+                        {Object.keys(groupedByArrivedate).map((arriveDate) => {
+                            return (
+                                <section key={arriveDate}>
+                                    <header>{arriveDate}</header>
+                                    <TourList tours={groupedByArrivedate[arriveDate]}
+                                              onTourClick={::this.tourLiClickHander}>
+                                    </TourList>
+                                </section>
+                            );
+                        })}
+                    </article>
                 </main>
                 <TourDetail tour={this.tour}
                             isActive={this.isTourDetailAcitve}
