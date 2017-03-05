@@ -36,6 +36,7 @@ export default class TopHeader extends React.Component {
             <header className="top-header">
                 <section className="icons-container">
                     <i className={classNames('zmdi', 'zmdi-menu', {'rotate-360': this.isSearchContainerActive})}></i>
+                    <span className="title">Tours</span>
                     <i onClick={::this.searchIconClickHandler} className="zmdi zmdi-search"></i>
                 </section>
                 <section className={classNames('search-container', {active: this.isSearchContainerActive})}>
