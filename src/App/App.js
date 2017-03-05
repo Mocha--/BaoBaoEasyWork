@@ -3,6 +3,7 @@ import { observer, inject } from 'mobx-react';
 import React from 'react';
 import TopHeader from './Widgets/TopHeader/TopHeader.js';
 import TourList from './Widgets/TourList/TourList.js';
+import TourDetail from './Widgets/TourDetail/TourDetail.js';
 import Spinner from './Widgets/Spinner/Spinner.js';
 import toursApiService from './Services/ToursApiService.js'
 import './App.styl';
@@ -18,6 +19,8 @@ export default class App extends React.Component {
 
     @observable hasFetchedTours = false;
     @observable tours = [];
+    @observable tour = {};
+    @observable isTourDetailAcitve = false;
 
     componentDidMount() {
         toursApiService
@@ -41,6 +44,15 @@ export default class App extends React.Component {
         this.tours = toursStore.tours;
     }
 
+    tourLiClickHander(tour) {
+        this.tour = tour;
+        this.isTourDetailAcitve = true;
+    }
+
+    tourDetailCloseIconClickHandler() {
+        this.isTourDetailAcitve = false;
+    }
+
     render() {
         return (
             <div className="app-component">
@@ -49,8 +61,14 @@ export default class App extends React.Component {
                 </TopHeader>
                 <main>
                     <Spinner shouldShow={!this.hasFetchedTours}></Spinner>
-                    <TourList tours={this.tours}></TourList>
+                    <TourList tours={this.tours}
+                        onTourClick={::this.tourLiClickHander}>
+                    </TourList>
                 </main>
+                <TourDetail tour={this.tour}
+                            isActive={this.isTourDetailAcitve}
+                            onCloseIconClick={::this.tourDetailCloseIconClickHandler}>
+                </TourDetail>
             </div>
         )
     }

@@ -1,0 +1,116 @@
+$headerBg = #00897b
+$fontColor = white
+
+article.tour-detail
+  position: absolute
+  top: 0
+  left: 0
+  width: 100%
+  height: 100%
+  transform: translate3d(100%, 0, 0)
+  opacity: 0.3
+  transition: transform .3s cubic-bezier(0.215, 0.770, 0.455, 0.905), opacity .3s cubic-bezier(0.215, 0.770, 0.455, 0.905)
+  background: #EEEEEE
+
+  &.active
+    transform: translate3d(0, 0, 0)
+    opacity: 1
+
+  > header
+    display: flex
+    align-items: center
+    height: 60px
+    padding: 0 20px
+    background: $headerBg
+
+    .zmdi
+      font-size: 30px
+      color: white
+
+  > h3
+    background: $headerBg
+    font-size: 28px
+    padding: 0 20px 5px
+    color: $fontColor
+
+  > h5
+    background: $headerBg
+    font-size: 20px
+    padding: 5px 20px 10px
+    color: rgba(255, 255, 255, 0.54)
+
+  > h1
+    background: $headerBg
+    padding: 0 20px
+    font-size: 40px
+    word-break: break-all
+    color: $fontColor
+
+  .tabs
+    position: relative
+    background: $headerBg
+    display: flex
+
+    .arrive
+    .depature
+      flex: 0 0 50%
+      font-size: 20px
+      color: rgba(255, 255, 255, 0.54)
+      text-align: center
+      line-height: 3
+      background: transparent
+      cursor: pointer
+
+    hr
+      position: absolute
+      bottom: 0
+      left: 0
+      width: 50%
+      border-bottom: 4px solid #d81b60
+      transition: transform .3s
+
+      &.left
+        transform: translate3d(0, 0, 0)
+
+      &.right
+        transform: translate3d(100%, 0, 0)
+
+  > ul
+    position: relative
+    overflow: hidden
+    height: 260px
+    margin: 20px 0
+
+    li
+      position: absolute
+      top: 0
+      left: 0
+      width: 100%
+      box-sizing: border-box
+      padding: 0 20px
+      transition: transform .3s
+
+      &.arrive
+        transform: translate3d(-100%, 0, 0)
+
+        &.active
+          transform: translate3d(0, 0, 0)
+
+      &.depature
+        transform: translate3d(100%, 0, 0)
+
+        &.active
+          transform: translate3d(0, 0, 0)
+
+      p
+        display: flex
+        font-size: 20px
+        line-height: 2
+        color: rgba(0, 0, 0, .7)
+
+        strong
+          flex: 0 0 50%
+
+        span
+          flex: 0 0 50%
+          text-align: right
