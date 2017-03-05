@@ -6,11 +6,13 @@ article.tour-detail
   top: 0
   left: 0
   width: 100%
+  max-width: 400px
   height: 100%
   transform: translate3d(100%, 0, 0)
   opacity: 0.3
   transition: transform .3s cubic-bezier(0.215, 0.770, 0.455, 0.905), opacity .3s cubic-bezier(0.215, 0.770, 0.455, 0.905)
   background: #EEEEEE
+  overflow: auto
 
   &.active
     transform: translate3d(0, 0, 0)
@@ -22,6 +24,7 @@ article.tour-detail
     height: 60px
     padding: 0 20px
     background: $headerBg
+    box-sizing: border-box
 
     .zmdi
       font-size: 30px
@@ -50,11 +53,13 @@ article.tour-detail
     position: relative
     background: $headerBg
     display: flex
+    padding: 20px 0 0
 
     .arrive
     .depature
       flex: 0 0 50%
       font-size: 20px
+      text-transform: uppercase
       color: rgba(255, 255, 255, 0.54)
       text-align: center
       line-height: 3
