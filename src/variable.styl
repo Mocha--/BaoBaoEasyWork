@@ -1,0 +1,66 @@
+$color = {
+  primary: #C62828,
+  accent: #1A1A1A,
+  grey: #e0e0e0,
+  dark: #333,
+  blue: #6fa7ff
+}
+
+$timingFunc = {
+  easeOut: cubic-bezier(0.23, 1, 0.32, 1)
+}
+
+$duration = {
+  veryShort: .2s
+  short: .5s,
+  long: 2s
+}
+
+$fontSize = {
+  small: 12px,
+  regular: 16px,
+  large: 24px,
+  huge: 36px
+}
+
+$fontWeight = {
+  light: 300,
+  regular: 400,
+  bold: 600,
+  bolder: 700
+}
+
+$boxShadow = {
+  //depth1: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24)
+  //depth2: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23)
+  //depth3: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23),
+  //depth4: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22),
+  //depth5: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22)
+}
+
+/**
+  responsive mixins
+**/
+$responsive()
+  if length(arguments) > 2
+    error('Please pass params as (min-width, max-width)')
+  else if length(arguments) == 2
+    @media only screen and (min-width: unit(arguments[0], px)) and (max-width: unit(arguments[1], px))
+      {block}
+  else if length(arguments) == 1
+    @media only screen and (max-width: unit(arguments[0], px))
+      {block}
+  else
+    error('Please pass at least 1 params')
+
+/**
+  retina mixins
+**/
+$retina(file, ext = png)
+  background-image: url(file'.'ext)
+
+  @media (min-resolution: 1.5 dppx), (-webkit-min-device-pixel-ratio: 1.5), (min-device-pixel-ratio: 1.5)
+    background-image: url(file'@2x.'ext)
+
+  @media (min-resolution: 3 dppx), (-webkit-min-device-pixel-ratio: 3), (min-device-pixel-ratio: 3)
+    background-image: url(file'@3x.'ext)

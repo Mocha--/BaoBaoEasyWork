@@ -1,0 +1,78 @@
+@require './variable.styl';
+
+/**
+  selection
+**/
+::selection
+  background: $color.primary
+::moz-selection
+  background: $color.primary
+
+html
+body
+  position: fixed
+  top: 0
+  left: 0
+  width: 100%
+  height: @width
+  overflow: hidden
+
+body
+  margin: 0
+  font-family: Roboto
+  color: $color.dark
+
+*
+  -webkit-tap-highlight-color: transparent
+
+h1
+h2
+h3
+h4
+h5
+h6
+  margin: 0
+  font-weight: normal
+
+p
+  margin: 0
+
+hr
+  margin: 0
+  border: 0
+  height: 0
+  widht: 100%
+  border-bottom: 2px solid black
+
+input[type="checkbox"]
+input[type="radio"]
+input
+  padding: 0
+  margin: 0
+  outline: none
+  border: 0
+  border-radius: 0
+  appearance: none
+
+/*
+ * remove border when clicking on button
+ */
+button::-moz-focus-inner
+  border: 0
+
+ul
+  padding: 0
+  margin: 0
+  list-style-type: none
+
+  li
+    outline: none
+    display: block
+
+a
+  outline: none
+  text-decoration: none
+  color: $color.dark
+
+.react-hide
+  display: none!important

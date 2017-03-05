@@ -1,0 +1,59 @@
+$headerBg = #00897B
+
+.top-header
+  z-index: 1
+  position: absolute
+  top: 0
+  left: 0
+  width: 100%
+  height: 60px
+  box-shadow: 0 2px 5px rgba(0,0,0,.26)
+  background: $headerBg
+
+  .icons-container
+    display: flex
+    justify-content: space-between
+    align-items: center
+    padding: 0 20px
+    height: 100%
+
+    .zmdi
+      font-size: 30px
+      color: white
+
+      &.zmdi-menu
+        transition: transform .3s
+
+        &.rotate-360
+          transform: rotate3d(0, 0, 1, 180deg)
+
+  .search-container
+    position: absolute
+    top: 0
+    left: 0
+    display: flex
+    align-items: center
+    height: 100%
+    width: 100%
+    box-sizing: border-box
+    padding: 0 20px
+    transform: translate3d(100%, 0, 0)
+    transition: transform .3s
+    background: #EEEEEE
+
+    &.active
+      transform: translate3d(0, 0, 0)
+
+    .zmdi
+      font-size: 30px
+      color: #616161
+      width: 45px
+      flex: 0 0 auto
+
+    input
+      background: #EEEEEE
+      height: 40px
+      margin: 0 0 0 20px
+      font-size: 24px
+      line-height: @height
+      margin: 0 0 0 20px

@@ -1,0 +1,49 @@
+$iconBg = #D81B60
+
+ul.tour-list
+  height: 100%
+  overflow: auto
+  -webkit-overflow-scrolling: touch
+
+  > li
+    display: flex
+    align-items: center
+    box-sizing: border-box
+    margin: 0 auto
+    padding: 0 20px
+    width: 100%
+    max-width: 400px
+    height: 90px
+    box-shadow: rgba(0, 0, 0, 0.117647) 0px 1px 6px, rgba(0, 0, 0, 0.117647) 0px 1px 4px
+
+    .tourist-number
+      flex: 0 0 auto
+      display: inline-block
+      border-radius: 50%
+      background: $iconBg
+      width: 45px
+      height: 45px
+      line-height: @height
+      text-align: center
+      font-weight: 700
+      color: white
+      letter-spacing: .05em
+
+    .tour-info
+      width: 100%
+      flex: 0 1 auto
+      margin: 0 0 0 20px
+
+      p
+        line-height: 1.5
+        white-space: nowrap
+        overflow: hidden
+        text-overflow: ellipsis
+
+        &.tour-id
+          font-size: 16px
+          font-weight: 700
+
+        &.tour-guide
+          font-size: 14px
+          color: #757575
