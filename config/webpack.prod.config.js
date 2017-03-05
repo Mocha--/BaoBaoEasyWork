@@ -21,7 +21,10 @@ module.exports = webpackMerge(baseConfig, {
                 screw_ie8: true,
                 keep_fnames: true
             },
-            comments: false
+            comments: false,
+            compress: {
+                screw_ie8: true
+            }
         }),
         new webpack.LoaderOptionsPlugin({
             minimize: true,
