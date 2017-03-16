@@ -17,6 +17,10 @@ export default class TourList extends React.Component {
         this.props.onTourClick(tour);
     }
 
+    externalLinkClickHander(evt) {
+        evt.stopPropagation();
+    }
+
     render() {
         const { tours } = this.props;
         return (
@@ -26,6 +30,7 @@ export default class TourList extends React.Component {
                     return (
                         <li key={id} onClick={this.tourClickHander.bind(this, tour)}>
                             <a className="tourist-number"
+                               onClick={::this.externalLinkClickHander}
                                href={`${EXTENAL_LINK_PREFIX}${id}`}
                                target="_blank">
                                {touristNumber}
