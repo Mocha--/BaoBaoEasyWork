@@ -1,6 +1,7 @@
 import { observable, } from 'mobx';
 import { observer, inject } from 'mobx-react';
 import { groupBy } from 'lodash';
+import moment from 'moment';
 import React from 'react';
 import TopHeader from './Widgets/TopHeader/TopHeader.js';
 import TourList from './Widgets/TourList/TourList.js';
@@ -67,7 +68,7 @@ export default class App extends React.Component {
                         {Object.keys(groupedByArrivedate).map((arriveDate) => {
                             return (
                                 <section key={arriveDate}>
-                                    <header>{arriveDate}</header>
+                                    <header>{moment(arriveDate, 'YYYY-MM-DD').format('DD/MM/YYYY ddd')}</header>
                                     <TourList tours={groupedByArrivedate[arriveDate]}
                                               onTourClick={::this.tourLiClickHander}>
                                     </TourList>
