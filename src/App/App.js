@@ -68,7 +68,10 @@ export default class App extends React.Component {
                         {Object.keys(groupedByArrivedate).map((arriveDate) => {
                             return (
                                 <section key={arriveDate}>
-                                    <header>{moment(arriveDate, 'YYYY-MM-DD').format('DD/MM/YYYY ddd')}</header>
+                                    <header>
+                                        <span>{moment(arriveDate, 'YYYY-MM-DD').format('DD/MM/YYYY ddd')}</span>
+                                        <span className="today">{moment().isSame(arriveDate, 'day') ? '--Tdoay' : null}</span>
+                                    </header>
                                     <TourList tours={groupedByArrivedate[arriveDate]}
                                               onTourClick={::this.tourLiClickHander}>
                                     </TourList>
