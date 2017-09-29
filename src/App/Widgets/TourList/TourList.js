@@ -1,7 +1,7 @@
 import React from 'react';
 import './TourList.styl';
 
-const EXTENAL_LINK_PREFIX = 'http://nzsystem.yinzisoft.com/shenaus/order/orderinfo.asp?orderid=';
+const EXTENAL_LINK_PREFIX = 'http://s681851350.online-home.ca/shenaus/order/orderinfo.asp?orderid=';
 
 export default class TourList extends React.Component {
     static propTypes = {
