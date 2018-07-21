@@ -24,6 +24,9 @@ export default class App extends React.Component {
     @observable tour = {};
     @observable isTourDetailAcitve = false;
 
+    todayHeader = null;
+    setTodayHeader = elm => this.todayHeader = elm;
+
     componentDidMount() {
         toursApiService
             .getTourList()
@@ -31,6 +34,7 @@ export default class App extends React.Component {
                 this.hasFetchedTours = true;
                 this.props.toursStore.append(...tours);
                 this.tours = this.props.toursStore.tours;
+                this.todayHeader.scrollIntoView();
             });
     }
 
@@ -68,7 +72,7 @@ export default class App extends React.Component {
                         {Object.keys(groupedByArrivedate).map((arriveDate) => {
                             return (
                                 <section key={arriveDate}>
-                                    <header>
+                                    <header ref={moment().isSame(arriveDate, 'day') ? this.setTodayHeader : null}>
                                         <span>{moment(arriveDate, 'YYYY-MM-DD').format('DD/MM/YYYY ddd')}</span>
                                         <span className="today">{moment().isSame(arriveDate, 'day') ? '--Tdoay' : null}</span>
                                     </header>
