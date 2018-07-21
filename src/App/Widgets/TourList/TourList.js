@@ -1,7 +1,7 @@
 import React from 'react';
 import './TourList.styl';
 
-const EXTENAL_LINK_PREFIX = 'http://s681851350.online-home.ca/shenaus/order/orderinfo.asp?orderid=';
+const EXTERNAL_LINK_PREFIX = 'http://im-jh.com/aus/order/orderinfo.asp?orderid=';
 
 export default class TourList extends React.Component {
     static propTypes = {
@@ -31,7 +31,7 @@ export default class TourList extends React.Component {
                         <li key={id} onClick={this.tourClickHander.bind(this, tour)}>
                             <a className="tourist-number"
                                onClick={::this.externalLinkClickHander}
-                               href={`${EXTENAL_LINK_PREFIX}${id}`}
+                               href={`${EXTERNAL_LINK_PREFIX}${id}`}
                                target="_blank">
                                {touristNumber}
                             </a>
