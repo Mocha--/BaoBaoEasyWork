@@ -40,9 +40,8 @@ export default class App extends React.Component {
 
     topHeaderSearchChangeHander(searchText) {
         const { toursStore } = this.props;
-        this.tours = toursStore.tours.filter((tour) => {
-            return tour.id.toLowerCase().includes(searchText.toLowerCase());
-        });
+        this.tours = toursStore.tours.filter(tour =>
+            tour.id.toLowerCase().includes(searchText.toLowerCase()) || tour.guide.toLowerCase().includes(searchText.toLowerCase()));
     }
 
     topHeaderBackClickHander() {
